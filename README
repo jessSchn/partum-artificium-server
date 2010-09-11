@@ -1,0 +1,73 @@
+###############################################################################
+# File:         README
+# Author:       Alex Brandt
+# Date:         2010/09/10
+###############################################################################
+
+*******************************************************************************
+* INSTALL
+*******************************************************************************
+
+This program was created using Gentoo Linux with a 2.6.35 gentoo sources kernel
+revision 5 on an X86_64 architecture.  The compiler used for building and
+testing is gcc version 4.4.4 in the portage tree provided by Gentoo
+(www.gentoo.org).  This software is licensed under the GPL as specified in the
+file COPYING.
+
+Build Instructions:
+
+$mkdir -p ${BUILD_DIR}
+$cd ${BUILD_DIR}
+$cmake ${SRC_DIR} -DCMAKE_BUILD_TYPE=Release
+$make
+
+If you want this installed type:
+$make install
+
+The executable will be in ${BUILD_DIR}/src/.
+
+***********************
+* Program Description *
+***********************
+
+This program utilizes the following:
+  1) 
+
+****************************
+* Program Input and Output *
+****************************
+
+Input ::
+  Inputs are documented in the help (shown below) as well as the man page.
+
+  Usage: build/src/proteus [options] <file_list>:
+  -h [ --help ]         Produce help information.
+  -d [ --debug ]        Turn on the debug flag to have extremely verbose
+                        output.
+  -v [ --verbose ]      Turn on the verbose flag to have more verbose output.
+
+Ouput ::
+  The visuals for the gameplay as well as verbose and debugging output if their
+  flags were set at the start of running.
+
+*******************
+* Program Testing *
+*******************
+
+A series of test programs are available in the test directory.  Each file has a short
+description at the top with the intended test.  To run the unit tests that have been
+provided for most of the library APIs simply do the following (make must be run first):
+
+Quick Check:
+$make test
+
+Detailed Error Output:
+$ ${BUILD_DIR}/test/unit/test_practicum-artificium-server
+
+**************
+* Known Bugs *
+**************
+
+All known bugs are recorded at the bugzilla page: http://bugzilla.alunduil.com.
+
+If a bug is found please report it to the project's bugzilla.

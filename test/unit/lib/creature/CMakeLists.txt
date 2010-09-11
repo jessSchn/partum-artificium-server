@@ -1,0 +1,2 @@
+add_library(creaturetest SHARED basecreaturetest.cpp bodyparttest.cpp skilltest.cpp)
+target_link_libraries(creaturetest creature)
