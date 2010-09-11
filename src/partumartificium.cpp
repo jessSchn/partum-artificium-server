@@ -24,13 +24,12 @@
 #include <stdio.h>
 #include <cstdlib>
 
-#include "proteus.h"
-#include "proteusgame.h"
+#include "partumartificium.h"
 
 #include "../include/output.h"
 
-Proteus::Proteus(int argc, char *argv[])
-: debug(false), verbose(false), fullscreen(false), game(NULL)
+PartumArtificium::PartumArtificium(int argc, char *argv[])
+: debug(false), verbose(false)
 {
     using namespace boost::program_options;
     std::string usage;
@@ -45,23 +44,21 @@ Proteus::Proteus(int argc, char *argv[])
     }
     catch (...)
     {
-        throw ProteusArgumentError("", description);
+        throw PartumArtificiumArgumentError("", description);
     }
 
-    if (variables.count("help") > 0) throw ProteusArgumentError("", description);
+    if (variables.count("help") > 0) throw PartumArtificiumArgumentError("", description);
     this->debug = variables.count("debug") > 0;
     this->verbose = variables.count("verbose") > 0;
-    this->fullscreen = variables.count("window") < 1;
 }
 
-boost::program_options::variables_map Proteus::parseOptions(int argc, char *argv[], boost::program_options::options_description * description)
+boost::program_options::variables_map PartumArtificium::parseOptions(int argc, char *argv[], boost::program_options::options_description * description)
 {
     using namespace boost::program_options;
     description->add_options()
     ("help,h", "Produce help information.")
     ("debug,d", "Turn on the debug flag to have extremely verbose output.")
     ("verbose,v", "Turn on the verbose flag to have more verbose output.")
-    ("window,w", "Run in windowed mode rather than use the fullscreen.")
     ;
 
     variables_map variables;
@@ -70,29 +67,16 @@ boost::program_options::variables_map Proteus::parseOptions(int argc, char *argv
     return variables;
 }
 
-void Proteus::Run()
+void PartumArtificium::Run()
 {
-    /**
-     * @note Could make this a factory for more views.
-     */
-    this->game = new ProteusGame(this->fullscreen, this->debug, this->verbose);
-
-    try
-    {
-        this->game->Run();
-    }
-    catch (ProteusGameError e)
-    {
-        throw ProteusError(e.GetMessage());
-    }
 }
 
-ProteusError::ProteusError(const std::string &message)
+PartumArtificiumError::PartumArtificiumError(const std::string &message)
 : BaseError(message)
 {
 }
 
-ProteusArgumentError::ProteusArgumentError(const std::string &message, const boost::program_options::options_description &description)
+PartumArtificiumArgumentError::PartumArtificiumArgumentError(const std::string &message, const boost::program_options::options_description &description)
 : BaseArgumentError(message, description)
 {
 }

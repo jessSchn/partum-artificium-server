@@ -17,16 +17,15 @@
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
 
-#ifndef PARTIFICUMARTIFICIUM_H
-#define PARTIFICUMARTIFICIUM_H
+#ifndef PARTUMARTIFICIUM_H
+#define PARTUMARTIFICIUM_H
 
 #include <boost/program_options.hpp>
-#include <vector>
 
 #include "../include/baseerror.h"
 #include "../include/baseargumenterror.h"
 
-class PartificumArtificium
+class PartumArtificium
 {
     public:
         /**
@@ -34,7 +33,7 @@ class PartificumArtificium
          * @param argc Count of the arguments.
          * @param argv The arguments vector.
          */
-        PartificumArtificium(int argc, char *argv[]);
+        PartumArtificium(int argc, char *argv[]);
 
         /**
          * @brief Run Application.
@@ -57,16 +56,16 @@ class PartificumArtificium
         boost::program_options::variables_map parseOptions(int argc, char *argv[], boost::program_options::options_description * description = new boost::program_options::options_description("Options: "));
 };
 
-class PartificumArtificiumError : public Errors::BaseError
+class PartumArtificiumError : public Errors::BaseError
 {
     public:
-        PartificumArtificiumError(const std::string & msg);
+        PartumArtificiumError(const std::string & msg);
 };
 
-class PartficumArtificiumArgumentError : public Errors::BaseArgumentError
+class PartumArtificiumArgumentError : public Errors::BaseArgumentError
 {
     public:
-        PartificumArtificiumArgumentError(const std::string & msg, const boost::program_options::options_description & description);
+        PartumArtificiumArgumentError(const std::string & msg, const boost::program_options::options_description & description);
 };
 
-#endif // PARTIFICUMARTIFICIUM_H
+#endif // PARTUMARTIFICIUM_H

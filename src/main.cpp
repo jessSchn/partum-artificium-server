@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
         cout << e.GetDescription() << endl;
         return EXIT_FAILURE;
     }
-    catch (PartumArtficiumError e)
+    catch (PartumArtificiumError e)
     {
         if (e.GetMessage().length() > 0) ERROR(e.GetMessage());
         return EXIT_FAILURE;
