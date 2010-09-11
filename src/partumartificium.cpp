@@ -69,6 +69,7 @@ boost::program_options::variables_map PartumArtificium::parseOptions(int argc, c
 
 void PartumArtificium::Run()
 {
+
 }
 
 PartumArtificiumError::PartumArtificiumError(const std::string &message)
