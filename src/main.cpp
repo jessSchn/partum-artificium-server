@@ -1,26 +1,26 @@
 #include <iostream>
 #include <cstdlib>
 
-#include "proteus.h"
+#include "partumartificium.h"
 #include "../include/output.h"
 
 using namespace std;
 
 int main(int argc, char *argv[])
 {
-    Proteus *application;
+    PartumArtificium *application;
     try
     {
-        application = new Proteus(argc, argv);
+        application = new PartumArtificium(argc, argv);
         application->Run();
     }
-    catch (ProteusArgumentError e)
+    catch (PartumArtificiumArgumentError e)
     {
         if (e.GetMessage().length() > 0) ERROR(e.GetMessage());
         cout << e.GetDescription() << endl;
         return EXIT_FAILURE;
     }
-    catch (ProteusError e)
+    catch (PartumArtficiumError e)
     {
         if (e.GetMessage().length() > 0) ERROR(e.GetMessage());
         return EXIT_FAILURE;

@@ -17,8 +17,8 @@
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
 
-#ifndef PROTEUS_H
-#define PROTEUS_H
+#ifndef PARTIFICUMARTIFICIUM_H
+#define PARTIFICUMARTIFICIUM_H
 
 #include <boost/program_options.hpp>
 #include <vector>
@@ -26,21 +26,19 @@
 #include "../include/baseerror.h"
 #include "../include/baseargumenterror.h"
 
-class ProteusGame;
-
-class Proteus
+class PartificumArtificium
 {
     public:
         /**
-        * @brief Constructor.
-        * @param argc Count of the arguments.
-        * @param argv The arguments vector.
-        */
-        Proteus(int argc, char *argv[]);
+         * @brief Constructor.
+         * @param argc Count of the arguments.
+         * @param argv The arguments vector.
+         */
+        PartificumArtificium(int argc, char *argv[]);
 
         /**
-        * @brief Run Application.
-        */
+         * @brief Run Application.
+         */
         void Run();
 
     private:
@@ -49,28 +47,26 @@ class Proteus
 
         bool fullscreen;
 
-        ProteusGame * game;
-
         /**
-        * @brief Parse the command line options.
-        * @param argc The count of the arguments.
-        * @param argv The argument vector.
-        * @param description The options description pointer.
-        * @return A variables map containing all of the variables parsed.
-        */
+         * @brief Parse the command line options.
+         * @param argc The count of the arguments.
+         * @param argv The argument vector.
+         * @param description The options description pointer.
+         * @return A variables map containing all of the variables parsed.
+         */
         boost::program_options::variables_map parseOptions(int argc, char *argv[], boost::program_options::options_description * description = new boost::program_options::options_description("Options: "));
 };
 
-class ProteusError : public Errors::BaseError
+class PartificumArtificiumError : public Errors::BaseError
 {
     public:
-        ProteusError(const std::string & msg);
+        PartificumArtificiumError(const std::string & msg);
 };
 
-class ProteusArgumentError : public Errors::BaseArgumentError
+class PartficumArtificiumArgumentError : public Errors::BaseArgumentError
 {
     public:
-        ProteusArgumentError(const std::string & msg, const boost::program_options::options_description & description);
+        PartificumArtificiumArgumentError(const std::string & msg, const boost::program_options::options_description & description);
 };
 
-#endif // PROTEUS_H
+#endif // PARTIFICUMARTIFICIUM_H
