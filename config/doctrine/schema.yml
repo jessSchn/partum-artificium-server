@@ -1,0 +1,15 @@
+PartumArtificiumTag:
+  columns:
+    name: { type: string(255), notnull: true, unique: true }
+
+PartumArtificiumForumEntry:
+  actAs: { Timestampable: ~ }
+  columns:
+    subject: { type: string(255) }
+    body: { type: string(4096), notnull: true }
+
+PartumArtificiumForumThread:
+  actAs: { Timestampable: ~ }
+  columns:
+    subject: { type: string(255) }
+
