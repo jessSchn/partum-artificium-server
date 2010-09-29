@@ -1,10 +1,7 @@
-# You can find more information about this file on the symfony website:
-# http://www.symfony-project.org/reference/1_4/en/07-Databases
-
 all:
   doctrine:
     class: sfDoctrineDatabase
     param:
-      dsn:      mysql:host=localhost;dbname=partum-artificium-server
-      username: root
-      password: 
+      dsn: 'mysql:host=localhost;dbname=partum_artificium'
+      username: partum
+      password: a5bab6b8e4b472fd884103be6c7482198261656dc40a891c1b5fa64db7b392c4
