@@ -1,12 +1,10 @@
 ### Tag Models ###
 
-# TODO Is this necessary?
-
 PartumArtificiumTag:
   actAs:
     Sluggable: { fields: [name] }
   columns:
-    name: { type: string(255), primary: true }
+    name: { type: string(255), notnull: true, unique: true }
 
 ### Forum Models ###
 
@@ -36,17 +34,17 @@ PartumArtificiumForumEntry:
       class: PartumArtificiumTag
       refClass: PartumArtificiumEntryTag
       local: entry_id
-      foreign: tag_name
+      foreign: tag_id
       foreignAlias: PartumArtificiumTags
     PartumArtificiumPlayer: { onDelete: SET NULL, local: author_id, foreign: id }
 
 PartumArtificiumEntryTag:
   columns:
     entry_id: { type: integer, primary: true }
-    tag_name: { type: string(255), primary: true }
+    tag_id: { type: integer, primary: true }
   relations:
     PartumArtificiumEntry: { onDelete: CASCADE, local: entry_id, foreign: id }
-    PartumArtificiumTag: { onDelete: CASCASE, local: tag_name, foreign: name }
+    PartumArtificiumTag: { onDelete: CASCASE, local: tag_name, foreign: id }
     
 PartumArtificiumForumThread:
   actAs: 
