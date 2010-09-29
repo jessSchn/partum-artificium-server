@@ -44,7 +44,7 @@ PartumArtificiumEntryTag:
     tag_id: { type: integer, primary: true }
   relations:
     PartumArtificiumEntry: { onDelete: CASCADE, local: entry_id, foreign: id }
-    PartumArtificiumTag: { onDelete: CASCASE, local: tag_name, foreign: id }
+    PartumArtificiumTag: { onDelete: CASCADE, local: tag_name, foreign: id }
     
 PartumArtificiumForumThread:
   actAs: 
