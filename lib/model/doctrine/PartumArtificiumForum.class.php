@@ -12,4 +12,21 @@
  */
 class PartumArtificiumForum extends BasePartumArtificiumForum
 {
+  public function getThreadCount()
+  {
+    return count($this->getPartumArtificiumForumThread());
+  }
+
+  public function getPostCount()
+  {
+    $count = 0;
+    foreach ($this->getPartumArtificiumForumThread() as $thread) {
+      $count += count($thread->getPartumArtificiumForumEntry());
+    }
+    return $count;
+  }
+
+  public function getMostRecentPost()
+  {
+  }
 }
