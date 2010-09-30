@@ -14,8 +14,8 @@
   <tbody>
     <?php foreach ($partum_artificium_forums as $i => $partum_artificium_forum): ?>
     <tr class="<?php echo fmod($i, 2) ? 'even' : 'odd' ?>">
-      <td><a href="<?php echo url_for('forum/show?id='.$partum_artificium_forum->getId()) ?>"><?php echo $partum_artificium_forum->getTitle() ?></a></td>
-      <td></td>
+      <td><?php echo link_to($partum_artificium_forum->getTitle(), 'threads', array("forum_slug" => $partum_artificium_forum->getSlug())) ?></td>
+      <td><?php echo $partum_artificium_forum->getSlug() ?></td>
       <td></td>
       <td></td>
     </tr>
@@ -23,4 +23,3 @@
   </tbody>
 </table>
 
-  <a href="<?php echo url_for('forum/new') ?>">New</a>

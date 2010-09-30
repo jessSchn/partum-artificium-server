@@ -19,8 +19,12 @@ class forumActions extends sfActions
 
   public function executeShow(sfWebRequest $request)
   {
-    $this->partum_artificium_forum = Doctrine::getTable('PartumArtificiumForum')->find(array($request->getParameter('id')));
-    $this->partum_artificium_threads = Doctrine::getTable('PartumArtificiumForumThread')->find(array($request->getParameter('id')));
+    $q = Doctrine_Query::create()
+      ->from('PartumArtificiumForum f')
+      ->where('f.slug = ?', $request->getParameter('forum_slug'));
+
+    $this->partum_artificium_forum = $q->fetchOne();
+    $this->partum_artificium_threads = $this->partum_artificium_forum->getPartumArtificiumForumThread();
     $this->forward404Unless($this->partum_artificium_forum);
   }
 

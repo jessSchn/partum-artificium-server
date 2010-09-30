@@ -10,7 +10,6 @@
     <th>Last Post</th>
   </thead>
   <tbody>
-    <?php echo $partum_artificium_threads ?>
     <?php if (count($partum_artificium_threads) > 0): ?>
     <?php foreach ($partum_artificium_threads as $i => $partum_artificium_thread): ?>
     <a href="<?php echo url_for('thread/edit?id='.$partum_artificium_thread->getId()) ?>">
