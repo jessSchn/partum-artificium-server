@@ -6,11 +6,14 @@ homepage:
   url:   /
   param: { module: default, action: index }
 
-# generic rules
-# please, remove them by adding more specific rules
-default_index:
-  url:   /:module
-  param: { action: index }
+forums:
+  url: /forum
+  param: { module: forum, action: index }
 
-default:
-  url:   /:module/:action/*
+threads:
+  url: /forum/:forum_slug
+  param: { module: forum, action: show }
+
+thread:
+  url: /forum/:forum_slug/:thread_slug
+  param: { module: thread, action: show }
