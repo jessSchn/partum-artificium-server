@@ -1,3 +1,5 @@
+<?php slot('title', sprintf('Partum Artificium Forums')) ?>
+
 <h1>Partum artificium forums List</h1>
 
 <table>

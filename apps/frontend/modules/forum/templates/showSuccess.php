@@ -1,3 +1,5 @@
+<?php slot('title', sprintf('Partum Artificium Forum > %s', $partum_artificium_forum->getTitle())) ?>
+
 <table>
   <thead>
     <th>Forum</th>
