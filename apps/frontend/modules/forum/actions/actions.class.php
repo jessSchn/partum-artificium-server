@@ -20,6 +20,7 @@ class forumActions extends sfActions
   public function executeShow(sfWebRequest $request)
   {
     $this->partum_artificium_forum = Doctrine::getTable('PartumArtificiumForum')->find(array($request->getParameter('id')));
+    $this->partum_artificium_threads = Doctrine::getTable('PartumArtificiumForumThread')->find(array($request->getParameter('id')));
     $this->forward404Unless($this->partum_artificium_forum);
   }
 

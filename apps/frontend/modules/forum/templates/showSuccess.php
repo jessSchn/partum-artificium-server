@@ -1,34 +1,31 @@
 <table>
+  <thead>
+    <th>Forum</th>
+    <th>Subject</th>
+    <th>Author</th>
+    <th>Replies</th>
+    <th>Views</th>
+    <th>Last Post</th>
+  </thead>
   <tbody>
-    <tr>
-      <th>Id:</th>
-      <td><?php echo $partum_artificium_forum->getId() ?></td>
-    </tr>
-    <tr>
-      <th>Title:</th>
-      <td><?php echo $partum_artificium_forum->getTitle() ?></td>
-    </tr>
-    <tr>
-      <th>Moderator:</th>
-      <td><?php echo $partum_artificium_forum->getModeratorId() ?></td>
-    </tr>
-    <tr>
-      <th>Created at:</th>
-      <td><?php echo $partum_artificium_forum->getCreatedAt() ?></td>
-    </tr>
-    <tr>
-      <th>Updated at:</th>
-      <td><?php echo $partum_artificium_forum->getUpdatedAt() ?></td>
-    </tr>
-    <tr>
-      <th>Slug:</th>
-      <td><?php echo $partum_artificium_forum->getSlug() ?></td>
-    </tr>
+    <?php echo $partum_artificium_threads ?>
+    <?php if (count($partum_artificium_threads) > 0): ?>
+    <?php foreach ($partum_artificium_threads as $i => $partum_artificium_thread): ?>
+    <a href="<?php echo url_for('thread/edit?id='.$partum_artificium_thread->getId()) ?>">
+      <tr class="<?php echo fmod($i, 2) ? 'even' : 'odd' ?>">
+        <td><?php echo $partum_artificium_forum->getTitle() ?></td>
+        <td><?php echo $partum_artificium_thread ?></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </a>
+    <?php endforeach ?>
+    <?php endif ?>
   </tbody>
 </table>
 
 <hr />
 
-<a href="<?php echo url_for('forum/edit?id='.$partum_artificium_forum->getId()) ?>">Edit</a>
-&nbsp;
-<a href="<?php echo url_for('forum/index') ?>">List</a>
+<a href="<?php echo url_for('forum/index') ?>">Forum List</a>

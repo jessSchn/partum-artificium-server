@@ -3,23 +3,19 @@
 <table>
   <thead>
     <tr>
-      <th>Id</th>
       <th>Title</th>
-      <th>Moderator</th>
-      <th>Created at</th>
-      <th>Updated at</th>
-      <th>Slug</th>
+      <th>Topics</th>
+      <th>Posts</th>
+      <th>Last Post</th>
     </tr>
   </thead>
   <tbody>
-    <?php foreach ($partum_artificium_forums as $partum_artificium_forum): ?>
-    <tr>
-      <td><a href="<?php echo url_for('forum/show?id='.$partum_artificium_forum->getId()) ?>"><?php echo $partum_artificium_forum->getId() ?></a></td>
-      <td><?php echo $partum_artificium_forum->getTitle() ?></td>
-      <td><?php echo $partum_artificium_forum->getModerator() ?></td>
-      <td><?php echo $partum_artificium_forum->getCreatedAt() ?></td>
-      <td><?php echo $partum_artificium_forum->getUpdatedAt() ?></td>
-      <td><?php echo $partum_artificium_forum->getSlug() ?></td>
+    <?php foreach ($partum_artificium_forums as $i => $partum_artificium_forum): ?>
+    <tr class="<?php echo fmod($i, 2) ? 'even' : 'odd' ?>">
+      <td><a href="<?php echo url_for('forum/show?id='.$partum_artificium_forum->getId()) ?>"><?php echo $partum_artificium_forum->getTitle() ?></a></td>
+      <td></td>
+      <td></td>
+      <td></td>
     </tr>
     <?php endforeach; ?>
   </tbody>
