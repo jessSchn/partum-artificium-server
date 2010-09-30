@@ -16,7 +16,7 @@ PartumArtificiumForum:
     title: { type: string(255), notnull: true, unique: true }
     moderator_id: { type: integer }
   relations:
-    PartumArtificiumModerator: { onDelete: SET NULL, local: moderator_id, foreign: id }
+    PartumArtificiumModerator: { class: PartumArtificiumPlayer, onDelete: SET NULL, local: moderator_id, foreign: id }
 
 PartumArtificiumForumEntry:
   actAs:

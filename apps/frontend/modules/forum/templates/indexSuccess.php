@@ -16,7 +16,7 @@
     <tr>
       <td><a href="<?php echo url_for('forum/show?id='.$partum_artificium_forum->getId()) ?>"><?php echo $partum_artificium_forum->getId() ?></a></td>
       <td><?php echo $partum_artificium_forum->getTitle() ?></td>
-      <td><?php echo $partum_artificium_forum->getModeratorId() ?></td>
+      <td><?php echo $partum_artificium_forum->getModerator() ?></td>
       <td><?php echo $partum_artificium_forum->getCreatedAt() ?></td>
       <td><?php echo $partum_artificium_forum->getUpdatedAt() ?></td>
       <td><?php echo $partum_artificium_forum->getSlug() ?></td>
