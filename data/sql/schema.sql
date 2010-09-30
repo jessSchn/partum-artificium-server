@@ -5,8 +5,8 @@ CREATE TABLE partum_artificium_forum_thread (id BIGINT AUTO_INCREMENT, subject V
 CREATE TABLE partum_artificium_player (id BIGINT AUTO_INCREMENT, user_name VARCHAR(255) NOT NULL UNIQUE, picture_path VARCHAR(255) UNIQUE, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, slug VARCHAR(255), UNIQUE INDEX partum_artificium_player_sluggable_idx (slug), PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE partum_artificium_tag (id BIGINT AUTO_INCREMENT, name VARCHAR(255) NOT NULL UNIQUE, slug VARCHAR(255), UNIQUE INDEX partum_artificium_tag_sluggable_idx (slug), PRIMARY KEY(id)) ENGINE = INNODB;
 ALTER TABLE partum_artificium_entry_tag ADD CONSTRAINT pepi FOREIGN KEY (entry_id) REFERENCES partum_artificium_forum_entry(id);
-ALTER TABLE partum_artificium_entry_tag ADD CONSTRAINT partum_artificium_entry_tag_tag_id_partum_artificium_tag_id FOREIGN KEY (tag_id) REFERENCES partum_artificium_tag(id) ON DELETE CASCADE;
-ALTER TABLE partum_artificium_forum ADD CONSTRAINT partum_artificium_forum_moderator_id_partum_artificium_player_id FOREIGN KEY (moderator_id) REFERENCES partum_artificium_player(id) ON DELETE SET NULL;
-ALTER TABLE partum_artificium_forum_entry ADD CONSTRAINT ptpi FOREIGN KEY (thread_id) REFERENCES partum_artificium_forum_thread(id) ON DELETE CASCADE;
-ALTER TABLE partum_artificium_forum_entry ADD CONSTRAINT papi FOREIGN KEY (author_id) REFERENCES partum_artificium_player(id) ON DELETE SET NULL;
-ALTER TABLE partum_artificium_forum_thread ADD CONSTRAINT pfpi FOREIGN KEY (forum_id) REFERENCES partum_artificium_forum(id) ON DELETE CASCADE;
+ALTER TABLE partum_artificium_entry_tag ADD CONSTRAINT partum_artificium_entry_tag_tag_id_partum_artificium_tag_id FOREIGN KEY (tag_id) REFERENCES partum_artificium_tag(id) ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE partum_artificium_forum ADD CONSTRAINT partum_artificium_forum_moderator_id_partum_artificium_player_id FOREIGN KEY (moderator_id) REFERENCES partum_artificium_player(id) ON UPDATE CASCADE ON DELETE SET NULL;
+ALTER TABLE partum_artificium_forum_entry ADD CONSTRAINT ptpi FOREIGN KEY (thread_id) REFERENCES partum_artificium_forum_thread(id) ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE partum_artificium_forum_entry ADD CONSTRAINT papi FOREIGN KEY (author_id) REFERENCES partum_artificium_player(id) ON UPDATE CASCADE ON DELETE SET NULL;
+ALTER TABLE partum_artificium_forum_thread ADD CONSTRAINT pfpi FOREIGN KEY (forum_id) REFERENCES partum_artificium_forum(id) ON UPDATE CASCADE ON DELETE CASCADE;

@@ -1,0 +1,21 @@
+PartumArtificiumForumEntry:
+<?php for ($i = 0; $i < 100; ++$i): ?>
+  entry_<?php echo $i ?>:
+    body: |
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu
+      consequat risus. Aliquam quis ante a dolor gravida congue. 
+      Aliquam vel nisi purus, non dictum dui. Morbi mattis porttitor 
+      leo nec vehicula. Integer pharetra imperdiet luctus. Integer 
+      euismod erat vel risus tempus pretium. Fusce scelerisque, odio 
+      sed accumsan semper, justo odio accumsan elit, sed tempus lacus 
+      felis quis sapien. Suspendisse at tortor augue, sed mollis lacus.
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+      Suspendisse congue diam sed nisi suscipit pharetra euismod magna 
+      sagittis. Donec metus nibh, tristique a fermentum eget, convallis 
+      sit amet tellus. Suspendisse placerat sodales magna, non tempus 
+      nunc consectetur eget.
+    
+    PartumArtificiumForumThread: thread_<?php echo rand(0, 24)."\n" ?>
+    PartumArtificiumPlayer: alunduil
+<?php endfor ?>
+

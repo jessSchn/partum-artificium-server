@@ -1,7 +1,7 @@
 PartumArtificiumForumThread:
-<?php for ($i = 0; $i < 500; ++$i): ?>
+<?php for ($i = 0; $i < 25; ++$i): ?>
   thread_<?php echo $i ?>: 
     subject: Thread <?php echo $i ?> Test
-    PartumArtificiumForum: forum_<?php echo rand(0, 49)."\n" ?>
+    PartumArtificiumForum: forum_<?php echo rand(0, 24)."\n" ?>
 <?php endfor ?>
 

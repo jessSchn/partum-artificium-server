@@ -1,5 +1,5 @@
 PartumArtificiumForum:
-<?php for ($i = 0; $i < 50; ++$i): ?>
+<?php for ($i = 0; $i < 25; ++$i): ?>
   forum_<?php echo $i ?>:
     title: Test Forum <?php echo $i ?> Testing
     PartumArtificiumModerator: alunduil
