@@ -9,6 +9,29 @@
     <?php include_javascripts() ?>
   </head>
   <body>
-    <?php echo $sf_content ?>
+    <div id="container">
+      <div id="header">
+        <div id="toast">
+          <?php if ($sf_user->hasFlash('notice')): ?>
+            <div class="flash_notice">
+              <?php echo $sf_user->getFlash('notice') ?>
+            </div>
+          <?php endif ?>
+                                                           
+          <?php if ($sf_user->hasFlash('error')): ?>
+            <div class="flash_error">
+              <?php echo $sf_user->getFlash('error') ?>
+            </div>
+          <?php endif ?>
+        </div>
+      </div>
+      <div id="page_content">
+        <?php echo $sf_content ?>
+      </div>
+      <div id="sidebar">
+      </div>
+      <div id="footer">
+      </div>
+    </div>
   </body>
 </html>
