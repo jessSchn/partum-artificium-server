@@ -29,6 +29,25 @@
         <?php echo $sf_content ?>
       </div>
       <div id="sidebar">
+        <ul id="navigation_bar">
+          <li>Login</li>
+          <li>Register</li>
+          <li>Feeds</li>
+          <li>API</li>
+          <li>About</li>
+          <li>Help</li>
+        </ul>
+        <div id="search">
+        </div>
+        <div id="post_graph">
+        </div>
+        <div id="ads">
+        </div>
+        <?php /* foreach (newPlayers as $player): */ ?>
+          <?php /* echo player_helper? */ ?>
+        <?php /* endforeach */ ?>
+        <div id="tags">
+        </div>
       </div>
       <div id="footer">
       </div>

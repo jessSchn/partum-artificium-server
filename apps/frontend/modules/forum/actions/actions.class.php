@@ -12,7 +12,7 @@ class forumActions extends sfActions
 {
   public function executeIndex(sfWebRequest $request)
   {
-    $this->partum_artificium_forums = Doctrine::getTable('PartumArtificiumForum')
+    $this->forums = Doctrine::getTable('PartumArtificiumForum')
       ->createQuery('a')
       ->execute();
   }
