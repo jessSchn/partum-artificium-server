@@ -7,13 +7,22 @@ homepage:
   param: { module: default, action: index }
 
 forums:
-  url: /forum
+  url: /forums
   param: { module: forum, action: index }
 
 threads:
-  url: /forum/:forum_slug
+  url: /forums/:forum_slug
   param: { module: forum, action: show }
 
 thread:
-  url: /forum/:forum_slug/:thread_slug
+  url: /forums/:forum_slug/:thread_slug
   param: { module: thread, action: show }
+
+entry:
+  url: /forums/:forum_slug/:thread_slug/#:entry_slug
+  param: { module: thread, action: show }
+
+player:
+  url: /players/:user_name
+  param: { module: player, action: show }
+

@@ -12,11 +12,15 @@
   <tbody>
     <?php foreach ($forums as $i => $forum): ?>
     <tr class="<?php echo fmod($i, 2) ? 'even' : 'odd' ?> forum_entry">
-      <td><?php echo $forum ?></td>
-      <td><?php echo $forum->getModerator() ?></td>
+      <td><?php echo link_to($forum, 'threads', array("forum_slug" => $forum->getSlug())) ?></td>
+      <td><?php echo link_to($forum->getModerator(), 'player', array("user_name" => $forum->getModerator())) ?></td>
       <td><?php echo $forum->getThreadCount() ?></td>
       <td><?php echo $forum->getEntryCount() ?></td>
-      <td><?php /** TODO Link to Entry */ echo $forum->getLatestEntry() ?></td>
+      <?php if (!is_null($forum->getLatestEntry())): ?>
+      <td><?php echo link_to($forum->getLatestEntry()->getCreatedAt(), 'entry', array("forum_slug" => $forum->getSlug(), "thread_slug" => $forum->getLatestEntry()->getThread()->getSlug(), "entry_slug" => $forum->getLatestEntry()->getSlug())) ?></td>
+      <?php else: ?>
+      <td>No Entries!</td>
+      <?php endif ?>
     </tr>
     <?php endforeach ?>
   </tbody>

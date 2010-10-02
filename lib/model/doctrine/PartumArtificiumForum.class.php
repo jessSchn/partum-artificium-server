@@ -14,19 +14,27 @@ class PartumArtificiumForum extends BasePartumArtificiumForum
 {
   public function getThreadCount()
   {
-    return count($this->getPartumArtificiumForumThread());
+    return count($this->getThreads());
   }
 
   public function getEntryCount()
   {
     $count = 0;
-    foreach ($this->getPartumArtificiumForumThread() as $thread) {
-      $count += count($thread->getPartumArtificiumForumEntry());
+    foreach ($this->getThreads() as $thread) {
+      $count += count($thread->getEntries());
     }
     return $count;
   }
 
   public function getLatestEntry()
   {
+    $latest_entry = null;
+    foreach ($this->getThreads() as $thread) {
+      foreach ($thread->getEntries() as $entry) {
+        if (is_null($latest_entry)) $latest_entry = $entry;
+        $latest_entry = $entry->getCreatedAt() < $latest_entry->getCreatedAt() ? $entry : $latest_entry;
+      }
+    }
+    return $latest_entry;
   }
 }
