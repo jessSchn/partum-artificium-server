@@ -10,7 +10,7 @@
   <?php foreach ($forums as $i => $forum): ?>
   <li class="<?php echo fmod($i, 2) ? 'even' : 'odd' ?>"><ul class="forum_entry">
     <li class="first"><?php echo $forum ?></li>
-    <li><?php echo $forum->getModerator() ?><li>
+    <li><?php echo $forum->getModerator() ?></li>
     <li><?php echo $forum->getThreadCount() ?></li>
     <li><?php echo $forum->getEntryCount() ?></li>
     <li><?php /** TODO Link to Entry */ echo $forum->getLatestEntry() ?></li>

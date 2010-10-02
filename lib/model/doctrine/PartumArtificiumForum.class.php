@@ -17,7 +17,7 @@ class PartumArtificiumForum extends BasePartumArtificiumForum
     return count($this->getPartumArtificiumForumThread());
   }
 
-  public function getPostCount()
+  public function getEntryCount()
   {
     $count = 0;
     foreach ($this->getPartumArtificiumForumThread() as $thread) {
@@ -26,7 +26,7 @@ class PartumArtificiumForum extends BasePartumArtificiumForum
     return $count;
   }
 
-  public function getMostRecentPost()
+  public function getLatestEntry()
   {
   }
 }
