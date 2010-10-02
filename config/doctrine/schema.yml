@@ -61,7 +61,6 @@ PartumArtificiumEntryTag:
 PartumArtificiumPlayer:
   actAs:
     Timestampable: ~
-    Sluggable: { fields: [user_name] }
   columns:
     user_name: { type: string(255), notnull: true, unique: true }
     picture_path: { type: string(255), unique: true }
