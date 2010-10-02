@@ -29,6 +29,3 @@
 
 <hr />
 
-<a href="<?php echo url_for('thread/edit?id='.$partum_artificium_forum_thread->getId()) ?>">Edit</a>
-&nbsp;
-<a href="<?php echo url_for('thread/index') ?>">List</a>

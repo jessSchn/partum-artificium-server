@@ -19,7 +19,12 @@ class threadActions extends sfActions
 
   public function executeShow(sfWebRequest $request)
   {
-    $this->partum_artificium_forum_thread = Doctrine::getTable('PartumArtificiumForumThread')->find(array($request->getParameter('id')));
+    $q = Doctrine_Query::create()
+      ->from('PartumArtificiumForumThread t')
+      ->where('t.slug = ?', $request->getParameter('thread_slug'));
+
+    $this->partum_artificium_forum_thread = $q->fetchOne();
+    $this->partum_artificium_thread_entries = $this->partum_artificium_forum_thread->getPartumArtificiumForumEntry();
     $this->forward404Unless($this->partum_artificium_forum_thread);
   }
 
