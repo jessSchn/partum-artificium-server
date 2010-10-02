@@ -12,4 +12,18 @@
  */
 class PartumArtificiumForumThread extends BasePartumArtificiumForumThread
 {
+  public function getLatestEntry()
+  {
+    $latest_entry = null;
+    foreach ($this->getEntries() as $entry) {
+      if (is_null($latest_entry)) $latest_entry = $entry;
+      $latest_entry = $latest_entry->getCreatedAt() < $entry->getCreatedAt() ? $latest_entry : $entry;
+    }
+    return $latest_entry;
+  }
+
+  public function getEntryCount()
+  {
+    return count($this->getEntries());
+  }
 }

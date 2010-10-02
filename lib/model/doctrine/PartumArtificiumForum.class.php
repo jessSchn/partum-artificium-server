@@ -30,10 +30,9 @@ class PartumArtificiumForum extends BasePartumArtificiumForum
   {
     $latest_entry = null;
     foreach ($this->getThreads() as $thread) {
-      foreach ($thread->getEntries() as $entry) {
-        if (is_null($latest_entry)) $latest_entry = $entry;
-        $latest_entry = $entry->getCreatedAt() < $latest_entry->getCreatedAt() ? $entry : $latest_entry;
-      }
+      $entry = $thread->getLatestEntry();
+      if (is_null($latest_entry)) $latest_entry = $entry;
+      $latest_entry = $entry->getCreatedAt() < $latest_entry->getCreatedAt() ? $entry : $latest_entry;
     }
     return $latest_entry;
   }

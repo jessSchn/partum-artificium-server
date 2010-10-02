@@ -23,9 +23,8 @@ class forumActions extends sfActions
       ->from('PartumArtificiumForum f')
       ->where('f.slug = ?', $request->getParameter('forum_slug'));
 
-    $this->partum_artificium_forum = $q->fetchOne();
-    $this->partum_artificium_threads = $this->partum_artificium_forum->getPartumArtificiumForumThread();
-    $this->forward404Unless($this->partum_artificium_forum);
+    $this->forum = $q->fetchOne();
+    $this->forward404Unless($this->forum);
   }
 
   public function executeNew(sfWebRequest $request)
