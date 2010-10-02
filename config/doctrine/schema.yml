@@ -16,7 +16,7 @@ PartumArtificiumForum:
     title: { type: string(255), notnull: true, unique: true }
     moderator_id: { type: integer }
   relations:
-    moderator: { class: PartumArtificiumPlayer, onUpdate: CASCADE, onDelete: SET NULL, local: moderator_id, foreign: id }
+    moderator: { class: PartumArtificiumPlayer, onUpdate: CASCADE, onDelete: SET NULL, local: moderator_id, foreign: id, foreignAlias: forums }
 
 PartumArtificiumForumThread:
   actAs: 
@@ -26,7 +26,7 @@ PartumArtificiumForumThread:
     subject: { type: string(255) }
     forum_id: { type: integer }
   relations:
-    forum: { class: PartumArtificiumForum, onUpdate: CASCADE, onDelete: CASCADE, local: forum_id, foreign: id }
+    forum: { class: PartumArtificiumForum, onUpdate: CASCADE, onDelete: CASCADE, local: forum_id, foreign: id, foreignAlias: threads }
 
 PartumArtificiumForumEntry:
   actAs:
@@ -39,14 +39,14 @@ PartumArtificiumForumEntry:
     tags_id: { type: integer }
     author_id: { type: integer }
   relations:
-    thread: { class: PartumArtificiumForumThread, onUpdate: CASCADE, onDelete: CASCADE, local: thread_id, foreign: id }
+    thread: { class: PartumArtificiumForumThread, onUpdate: CASCADE, onDelete: CASCADE, local: thread_id, foreign: id, foreignAlias: entries }
     tags:
       class: PartumArtificiumTag
       refClass: PartumArtificiumEntryTag
       local: entry_id
       foreign: tag_id
-      foreignAlias: PartumArtificiumTags
-    author: { class: PartumArtificiumPlayer, onUpdate: CASCADE, onDelete: SET NULL, local: author_id, foreign: id }
+      foreignAlias: entries
+    author: { class: PartumArtificiumPlayer, onUpdate: CASCADE, onDelete: SET NULL, local: author_id, foreign: id, foreignAlias: entries }
 
 PartumArtificiumEntryTag:
   columns:
