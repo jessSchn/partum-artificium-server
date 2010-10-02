@@ -2,6 +2,6 @@ PartumArtificiumForum:
 <?php for ($i = 0; $i < 25; ++$i): ?>
   forum_<?php echo $i ?>:
     title: Test <?php echo $i ?> Forum
-    moderator: <?php echo (rand(1,2) == 0 ? "alunduil" : "arnox")."\n" ?> 
+    moderator: <?php echo (rand(1,2) == 2 ? "alunduil" : "arnox")."\n" ?> 
 <?php endfor ?>
 

@@ -16,6 +16,6 @@ PartumArtificiumForumEntry:
       nunc consectetur eget.
     
     thread: thread_<?php echo rand(0, 24)."\n" ?>
-    author: <?php echo (rand(1,2) == 0 ? "alunduil" : "arnox")."\n" ?>
+    author: <?php echo (rand(1,2) == 2 ? "alunduil" : "arnox")."\n" ?>
 <?php endfor ?>
 
