@@ -1,7 +1,7 @@
 PartumArtificiumForum:
 <?php for ($i = 0; $i < 25; ++$i): ?>
   forum_<?php echo $i ?>:
-    title: Test Forum <?php echo $i ?> Testing
-    PartumArtificiumModerator: alunduil
+    title: Test <?php echo $i ?> Forum
+    moderator: <?php echo (rand(1,2) == 0 ? "alunduil" : "arnox")."\n" ?> 
 <?php endfor ?>
 

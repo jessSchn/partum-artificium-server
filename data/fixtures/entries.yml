@@ -15,7 +15,7 @@ PartumArtificiumForumEntry:
       sit amet tellus. Suspendisse placerat sodales magna, non tempus 
       nunc consectetur eget.
     
-    PartumArtificiumForumThread: thread_<?php echo rand(0, 24)."\n" ?>
-    PartumArtificiumPlayer: alunduil
+    thread: thread_<?php echo rand(0, 24)."\n" ?>
+    author: <?php echo (rand(1,2) == 0 ? "alunduil" : "arnox")."\n" ?>
 <?php endfor ?>
 
