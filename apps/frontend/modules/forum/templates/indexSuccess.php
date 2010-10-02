@@ -1,20 +1,24 @@
 <?php slot('title', sprintf('Partum Artificium Forums')) ?>
-<ul id="forums">
-  <li><ul id="forum_header">
-    <li class="first">Title</li>
-    <li>Moderator</li>
-    <li>Thread Count</li>
-    <li>Entry Count</li>
-    <li>Latest Entry</li>
-  </ul></li>
-  <?php foreach ($forums as $i => $forum): ?>
-  <li class="<?php echo fmod($i, 2) ? 'even' : 'odd' ?>"><ul class="forum_entry">
-    <li class="first"><?php echo $forum ?></li>
-    <li><?php echo $forum->getModerator() ?></li>
-    <li><?php echo $forum->getThreadCount() ?></li>
-    <li><?php echo $forum->getEntryCount() ?></li>
-    <li><?php /** TODO Link to Entry */ echo $forum->getLatestEntry() ?></li>
-  </ul></li>
-  <?php endforeach ?>
-</ul>
+<table id="forums">
+  <thead id="forum_header">
+    <tr>
+      <th>Title</th>
+      <th>Moderator</th>
+      <th>Thread Count</th>
+      <th>Entry Count</th>
+      <th>Latest Entry</th>
+    <tr>
+  </thead>
+  <tbody>
+    <?php foreach ($forums as $i => $forum): ?>
+    <tr class="<?php echo fmod($i, 2) ? 'even' : 'odd' ?> forum_entry">
+      <td><?php echo $forum ?></td>
+      <td><?php echo $forum->getModerator() ?></td>
+      <td><?php echo $forum->getThreadCount() ?></td>
+      <td><?php echo $forum->getEntryCount() ?></td>
+      <td><?php /** TODO Link to Entry */ echo $forum->getLatestEntry() ?></td>
+    </tr>
+    <?php endforeach ?>
+  </tbody>
+</table>
 
