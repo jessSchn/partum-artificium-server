@@ -23,9 +23,8 @@ class threadActions extends sfActions
       ->from('PartumArtificiumForumThread t')
       ->where('t.slug = ?', $request->getParameter('thread_slug'));
 
-    $this->partum_artificium_forum_thread = $q->fetchOne();
-    $this->partum_artificium_thread_entries = $this->partum_artificium_forum_thread->getPartumArtificiumForumEntry();
-    $this->forward404Unless($this->partum_artificium_forum_thread);
+    $this->entries = $q->fetchOne()->getEntries();
+    $this->forward404Unless($this->entries);
   }
 
   public function executeNew(sfWebRequest $request)
