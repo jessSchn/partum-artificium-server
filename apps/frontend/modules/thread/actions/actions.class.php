@@ -23,7 +23,9 @@ class threadActions extends sfActions
       ->from('PartumArtificiumForumThread t')
       ->where('t.slug = ?', $request->getParameter('thread_slug'));
 
-    $this->entries = $q->fetchOne()->getEntries();
+    $this->thread = $q->fetchOne();
+    $this->forum = $this->thread->getForum();
+    $this->entries = $this->thread->getEntries();
     $this->forward404Unless($this->entries);
   }
 
