@@ -12,29 +12,23 @@
  */
 class PartumArtificiumForum extends BasePartumArtificiumForum
 {
-  public function getThreadCount()
+  public function incrementThreadCount($increment = 1)
   {
-    return count($this->getThreads());
+    $this->setThreadCount($this->getThreadCount() + $increment);
   }
 
-  public function getEntryCount()
+  public function incrementEntryCount($increment = 1)
   {
-    $count = 0;
-    foreach ($this->getThreads() as $thread) {
-      $count += count($thread->getEntries());
-    }
-    return $count;
+    $this->setEntryCount($this->getEntryCount() + $increment);
   }
 
   public function getLatestEntry()
   {
-    $latest_entry = null;
-    foreach ($this->getThreads() as $thread) {
-      $entry = $thread->getLatestEntry();
-      if (is_null($entry)) continue;
-      if (is_null($latest_entry)) $latest_entry = $entry;
-      $latest_entry = $entry->getCreatedAt() < $latest_entry->getCreatedAt() ? $entry : $latest_entry;
+    if (!is_null($this->getLatestEntryId()) && is_null($this->latest_entry)) {
+      $this->latest_entry = Doctrine::getTable('PartumArtificiumForumEntry')->find($this->getLatestEntryId());
     }
-    return $latest_entry;
+    return $this->latest_entry;
   }
+
+  private $latest_entry = null;
 }

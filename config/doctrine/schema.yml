@@ -15,8 +15,12 @@ PartumArtificiumForum:
   columns:
     title: { type: string(255), notnull: true, unique: true }
     moderator_id: { type: integer }
+    thread_count: { type: integer, notnull: true, default: 0 }
+    entry_count: { type: integer, notnull: true, default: 0 }
+    latest_entry_id: { type: integer }
   relations:
     moderator: { class: PartumArtificiumPlayer, onUpdate: CASCADE, onDelete: SET NULL, local: moderator_id, foreign: id, foreignAlias: forums }
+    latest_entry: { class: PartumArtifisiumForumEntry, onUpdate: CASCADE, onDelete: SET NULL, local: latest_entry_id, foreign: id, foreignAlias: forum }
 
 PartumArtificiumForumThread:
   actAs: 
@@ -25,8 +29,11 @@ PartumArtificiumForumThread:
   columns:
     subject: { type: string(255) }
     forum_id: { type: integer }
+    entry_count: { type: integer, notnull: true, default: 0 }
+    latest_entry_id: { type: integer }
   relations:
     forum: { class: PartumArtificiumForum, onUpdate: CASCADE, onDelete: CASCADE, local: forum_id, foreign: id, foreignAlias: threads }
+    latest_entry: { class: PartumArtificiumForumEntry, onUpdate: CASCADE, onDelete: SET NULL, local: latest_entry_id, foreign: id, foreignAlias: thread }
 
 PartumArtificiumForumEntry:
   actAs:

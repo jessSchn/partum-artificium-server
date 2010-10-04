@@ -17,7 +17,7 @@
       <td></td>
       <td><?php echo $thread->getEntryCount() ?></td>
       <?php if (!is_null($thread->getLatestEntry())): ?>
-      <td><?php echo link_to($thread->getLatestEntry()->getCreatedAt(), 'entry', array("forum_slug" => $forum->getSlug(), "thread_slug" => $thread->getSlug(), "entry_slug" => $thread->getLatestEntry()->getSlug())) ?></td>
+      <td><?php echo $thread->getLatestEntry()->getCreatedAt() ?></td>
       <?php else: ?>
       <td>No Entries!</td>
       <?php endif ?>

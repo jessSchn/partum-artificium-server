@@ -12,4 +12,25 @@
  */
 class PartumArtificiumForumEntry extends BasePartumArtificiumForumEntry
 {
+  public function save(Doctrine_Connection $conn = null)
+  {
+
+    if ($this->isNew()) {
+      $ret = parent::save($conn);
+      
+      $thread = $this->getThread();
+      $thread->incrementEntryCount();
+      $thread->setLatestEntryId($this->getId());
+      $thread->save($conn);
+
+      $forum = $this->getThread()->getForum();
+      $forum->incrementEntryCount();
+      $forum->setLatestEntryId($this->getId());
+      $forum->save($conn);
+    } else {
+      $ret = parent::save($conn);
+    }
+
+    return $ret;
+  }
 }

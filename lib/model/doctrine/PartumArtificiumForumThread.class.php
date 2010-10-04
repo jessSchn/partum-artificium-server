@@ -12,18 +12,19 @@
  */
 class PartumArtificiumForumThread extends BasePartumArtificiumForumThread
 {
-  public function getLatestEntry()
+  public function save(Doctrine_Connection $conn = null)
   {
-    $latest_entry = null;
-    foreach ($this->getEntries() as $entry) {
-      if (is_null($latest_entry)) $latest_entry = $entry;
-      $latest_entry = $latest_entry->getCreatedAt() < $entry->getCreatedAt() ? $latest_entry : $entry;
+    if ($this->isNew()) {
+      $forum = $this->getForum();
+      $forum->incrementThreadCount();
+      $forum->save();
     }
-    return $latest_entry;
+
+    return parent::save($conn);
   }
 
-  public function getEntryCount()
+  public function incrementEntryCount($increment = 1)
   {
-    return count($this->getEntries());
+    $this->setEntryCount($this->getEntryCount() + $increment);
   }
 }
