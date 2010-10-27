@@ -1,0 +1,4 @@
+spheroid:
+  position: [ 0, 1, 2 ]
+  radius: 2
+  texture: { pigment: yellow }

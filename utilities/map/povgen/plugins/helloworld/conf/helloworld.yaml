@@ -1,7 +1,0 @@
-# nick:
-#   servers: [irc://server1.example.com, irc://server2.example.com:6667]
-#   channels: [channel1, channel2, channel3]
-
-helloword:
-  servers: [irc://link.nintendofreaks.com]
-  channels: [aimltesting, lobby]
