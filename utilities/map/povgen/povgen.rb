@@ -19,13 +19,14 @@
 # 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.            #
 ########################################################################
 
-require 'xircd'
+require 'povgen'
+require 'povray'
 require 'notices'
 
 begin
-  application = Xircd::XircdApplication.new
+  application = PovGen::PovGenApplication.new
   application.run
-rescue Xircd::XircdApplicationError => e
+rescue PovGen::PovGenApplicationError => e
   puts Notices.error(e.message)
   puts Notices.red(e.backtrace)
   exit(1)
