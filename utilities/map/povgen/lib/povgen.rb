@@ -33,9 +33,17 @@ module PovGen
         version "povgen 1.0.0 (c) 2010 Alex Brandt <alunduil@alunduil.com>"
         banner "usage: povgen [options]"
 
-        opt :debug, "Output debugging information", :default => false, :short => "-d"
+        opt :debug, "Output debugging information", :default => false, :short => "-D"
         opt :verbose, "Output verbose information", :default => false, :short => "-v"
+        opt :camera, "Camera definition specified as <c1,c2,..,cn,f1,f2,..,fn>",
+          :short => "-c", :type => String
+        opt :directory, "YAML Configuration files directory", :short => "-d",
+          :type => String
+        opt :output, "Output file for the compiled file", :short => "-o",
+          :type => String
       end
+
+      Trollop::die :directory, "must exist" unless File.exists?(@options[:directory])
 
       @options[:verbose] = @options[:debug] if @options[:debug]
     end
