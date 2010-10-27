@@ -1,0 +1,33 @@
+grammar IniFile
+  rule inifile
+    comment* blankline* section* blankline*
+  end
+
+  rule comment
+    ( "#" / ";" ) ( ![\n] .)* [\n]?
+  end
+
+  rule blankline
+    [\n]
+  end
+
+  rule section
+    '[' section_id ']' blankline* comment* blankline* keyval* blankline* comment*
+  end
+
+  rule section_id
+    [-_.a-zA-Z0-9]+
+  end
+
+  rule keyval
+    key " "? ( "=" / ":" ) " "? value comment? blankline* 
+  end
+
+  rule key
+    [-_.a-zA-Z0-9]+
+  end
+
+  rule value
+    [- ,_.:/a-zA-Z0-9]+
+  end
+end
