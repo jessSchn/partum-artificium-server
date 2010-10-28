@@ -1,0 +1,13 @@
+spheroid1:
+  type: sphere
+  position: [ 0, 1, 2 ]
+  radius: 2
+  texture: { pigment: yellow }
+  includes: [ colors.inc, stones.inc ]
+
+spheroid2:
+  type: sphere
+  position: [ 0, -1, -2 ]
+  radius: 1
+  texture: { pigment: red }
+  includes: [ colors.inc, stones.inc ]
