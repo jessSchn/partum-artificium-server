@@ -22,6 +22,7 @@
 require 'trollop'
 require 'find'
 require 'yaml'
+require 'pp'
 
 module PovGen
   class PovGenApplication
@@ -31,6 +32,7 @@ module PovGen
 
       $stdout = File.new(@options[:output], 'w') if @options[:output] && @options[:output] != "-"
       @objects_dictionary = {}
+      warn Notices.debug("@objects_dictionary.class: " + @objects_dictionary.class.to_s) if @options[:debug]
     end
 
     def parse_options
@@ -66,6 +68,9 @@ module PovGen
       puts "}"
     end
 
+    def output_objects
+    end
+
     def camera_location
       ret = @options[:camera].split(',')[0, (@options[:camera].split(',').size/2).round].join(',')
       warn Notices.debug("Camera Location: " + ret) if @options[:debug]
@@ -84,9 +89,14 @@ module PovGen
         if File.file?(entry) and entry[/.+\.yml$/]
           warn Notices.verbose("loading " + entry) if @options[:verbose]
           dictionary = YAML.load(File.open(entry, 'r') { |f| f.read })
+          
+          warn Notices.debug("dictionary:") if @options[:debug]
+          PP::pp(dictionary, $stderr, 50) if @options[:debug]
+          
           @objects_dictionary.merge!(dictionary)
-          warn Notices.debug("dictionary: " + dictionary.to_s) if @options[:debug]
-          warn Notices.debug("@objects_dictionary: " + @objects_dictionary.to_s) if @options[:debug]
+          
+          warn Notices.debug("@objects_dictionary:") if @options[:debug]
+          PP::pp(@objects_dictionary, $stderr, 50) if @options[:debug]
         end
       end
     end
