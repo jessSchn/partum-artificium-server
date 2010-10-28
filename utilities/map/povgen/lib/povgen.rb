@@ -20,6 +20,8 @@
 ############################################################################
 
 require 'trollop'
+require 'find'
+require 'yaml'
 
 module PovGen
   class PovGenApplication
@@ -28,6 +30,7 @@ module PovGen
       self.parse_options
 
       $stdout = File.new(@options[:output], 'w') if @options[:output] && @options[:output] != "-"
+      @objects_dictionary = {}
     end
 
     def parse_options
@@ -53,9 +56,8 @@ module PovGen
 
     def run
       output_camera
+      load_directory
     end
-
-    private
 
     def output_camera
       puts "camera {"
@@ -74,6 +76,19 @@ module PovGen
       ret = @options[:camera].split(',')[(@options[:camera].split(',').size/2).round, @options[:camera].split(',').size].join(',')
       warn Notices.debug("Camera Location: " + ret) if @options[:debug]
       "<" + ret + ">"
+    end
+
+    def load_directory
+      warn Notices.verbose("Loading YAML from " + @options[:directory]) if @options[:verbose]
+      Find.find(@options[:directory]) do |entry|
+        if File.file?(entry) and entry[/.+\.yml$/]
+          warn Notices.verbose("loading " + entry) if @options[:verbose]
+          dictionary = YAML.load(File.open(entry, 'r') { |f| f.read })
+          @objects_dictionary.merge!(dictionary)
+          warn Notices.debug("dictionary: " + dictionary.to_s) if @options[:debug]
+          warn Notices.debug("@objects_dictionary: " + @objects_dictionary.to_s) if @options[:debug]
+        end
+      end
     end
   end
 
