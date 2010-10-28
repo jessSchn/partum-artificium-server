@@ -26,6 +26,8 @@ module PovGen
     
     def initialize
       self.parse_options
+
+      $stdout = File.new(@options[:output], 'w') if @options[:output] && @options[:output] != "-"
     end
 
     def parse_options
@@ -35,24 +37,47 @@ module PovGen
 
         opt :debug, "Output debugging information", :default => false, :short => "-D"
         opt :verbose, "Output verbose information", :default => false, :short => "-v"
-        opt :camera, "Camera definition specified as <c1,c2,..,cn,f1,f2,..,fn>",
-          :short => "-c", :type => String
+        opt :camera, "Camera definition specified as <c1,c2,..,cn,f1,f2,..,fn>", :short => "-c", :type => String
         opt :directory, "YAML Configuration files directory", :short => "-d",
           :type => String
         opt :output, "Output file for the compiled file", :short => "-o",
           :type => String
       end
 
-      Trollop::die :directory, "must exist" unless File.exists?(@options[:directory])
+      Trollop::die :directory, "must exist" unless File.exists?(@options[:directory]) if @options[:directory]
+      Trollop::die :output, "must exist" unless File.dirname(@options[:output]).exists?(@options[:output]) if @options[:output] != "-" if @options[:output]
+      Trollop::die :camera, "one camera must be passed" unless @options[:camera]
 
       @options[:verbose] = @options[:debug] if @options[:debug]
     end
 
     def run
+      output_camera
+    end
+
+    private
+
+    def output_camera
+      puts "camera {"
+      puts "  location " + camera_location
+      puts "  look_at " + camera_look_at
+      puts "}"
+    end
+
+    def camera_location
+      ret = @options[:camera].split(',')[0, (@options[:camera].split(',').size/2).round].join(',')
+      warn Notices.debug("Camera Location: " + ret) if @options[:debug]
+      "<" + ret + ">"
+    end
+
+    def camera_look_at
+      ret = @options[:camera].split(',')[(@options[:camera].split(',').size/2).round, @options[:camera].split(',').size].join(',')
+      warn Notices.debug("Camera Location: " + ret) if @options[:debug]
+      "<" + ret + ">"
     end
   end
 
-  class XircdApplicationError < StandardError
+  class PovGenApplicationError < StandardError
   end
 end
 

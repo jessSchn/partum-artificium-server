@@ -20,7 +20,6 @@
 ########################################################################
 
 require 'povgen'
-require 'povray'
 require 'notices'
 
 begin
